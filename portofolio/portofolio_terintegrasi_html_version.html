@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Profesional Terintegrasi</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Portofolio Profesional - Front-End, UI/UX, & Digital Marketing">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .font-body { font-family: 'Inter', sans-serif; }
+        
+        /* Custom Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 6s ease-in-out 3s infinite; }
+        
+        /* Reveal Animation Base Classes */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(3rem);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .reveal-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans selection:bg-blue-600 selection:text-white overflow-x-hidden">
+
+    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-40 border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer" onclick="scrollToSection('beranda')">
+                    <span class="font-heading font-extrabold text-2xl tracking-tight text-slate-900">
+                        PORT<span class="text-blue-600">FOLIO</span>
+                    </span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8 items-center" id="desktop-nav">
+                    <button onclick="scrollToSection('beranda')" class="nav-btn font-body text-sm font-medium transition-colors duration-200 text-blue-600 hover:text-blue-600" data-section="beranda">Beranda</button>
+                    <button onclick="scrollToSection('tentang')" class="nav-btn font-body text-sm font-medium transition-colors duration-200 text-slate-600 hover:text-blue-600" data-section="tentang">Tentang</button>
+                    <button onclick="scrollToSection('keahlian')" class="nav-btn font-body text-sm font-medium transition-colors duration-200 text-slate-600 hover:text-blue-600" data-section="keahlian">Keahlian</button>
+                    <button onclick="scrollToSection('portofolio')" class="nav-btn font-body text-sm font-medium transition-colors duration-200 text-slate-600 hover:text-blue-600" data-section="portofolio">Portofolio</button>
+                    <button onclick="scrollToSection('kontak')" class="nav-btn font-body text-sm font-medium transition-colors duration-200 text-slate-600 hover:text-blue-600" data-section="kontak">Kontak</button>
+                    <a href="#download-cv" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-md transition-all duration-200">
+                        <i data-lucide="download" class="w-4 h-4 mr-2"></i> Unduh CV
+                    </a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+                        <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <button onclick="scrollToSection('beranda')" class="block w-full text-left px-4 py-3 font-body text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Beranda</button>
+                <button onclick="scrollToSection('tentang')" class="block w-full text-left px-4 py-3 font-body text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Tentang</button>
+                <button onclick="scrollToSection('keahlian')" class="block w-full text-left px-4 py-3 font-body text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Keahlian</button>
+                <button onclick="scrollToSection('portofolio')" class="block w-full text-left px-4 py-3 font-body text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Portofolio</button>
+                <button onclick="scrollToSection('kontak')" class="block w-full text-left px-4 py-3 font-body text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Kontak</button>
+                <div class="px-4 pt-4">
+                    <a href="#download-cv" class="flex items-center justify-center w-full px-5 py-3 border border-transparent text-base font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700">
+                        <i data-lucide="download" class="w-5 h-5 mr-2"></i> Unduh CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        
+        <section id="beranda" class="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-50 blur-3xl opacity-50 mix-blend-multiply pointer-events-none animate-float"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-slate-100 blur-3xl opacity-50 mix-blend-multiply pointer-events-none animate-float-delayed"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 lg:py-20">
+        <!-- Grid Container untuk 2 Kolom -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            <!-- KOLOM KIRI: TEKS & TOMBOL (7 Kolom pada Desktop) -->
+            <div class="lg:col-span-7">
+                <div class="reveal-element" style="transition-delay: 0ms">
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 font-body text-sm font-semibold mb-6 border border-blue-100">
+                        Kreator Digital Multidisiplin
+                    </span>
+                </div>
+                
+                <div class="reveal-element" style="transition-delay: 150ms">
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                        Rafi <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Wika</span><br />
+                        Ananda Rumpoko
+                    </h1>
+                </div>
+                
+                <div class="reveal-element" style="transition-delay: 300ms">
+                    <p class="font-body text-lg sm:text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed">
+                        <strong>hai, wellcome di portfolio saya!</strong> Temukan berbagai karya dan pengalaman saya dalam bidang <strong>Front-End, Desain, dan Digital Marketing</strong>.
+
+                    </p>
+                </div>
+                
+                <div class="reveal-element" style="transition-delay: 450ms">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('portofolio')" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/30 hover:shadow-blue-600/40 transition-all duration-300 transform hover:-translate-y-1">
+                            Lihat Karya Saya <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </button>
+                        <button onclick="scrollToSection('kontak')" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-lg text-slate-700 bg-white border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-300">
+                            Hubungi Saya
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KOLOM KANAN: GAMBAR / FOTO (5 Kolom pada Desktop) -->
+            <div class="lg:col-span-4 reveal-element" style="transition-delay: 600ms">
+                <div class="relative mx-auto max-w-md lg:max-w-none">
+                    
+                    <!-- Gradient Glow/Aura di belakang foto -->
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-3xl blur-2xl opacity-20 transform -rotate-3 transition duration-500 group-hover:opacity-30"></div>
+                    
+                    <!-- Frame Gambar Utama -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100 bg-slate-50 group">
+                        <img 
+                            src="image/saya.png" 
+                            alt="Rafi Wika Ananda Rumpoko" 
+                            class="w-full h-auto object-cover object-center aspect-[4/5] transform transition-transform duration-700 group-hover:scale-105"
+                        />
+                        
+                        <!-- Overlay halus di bagian bawah foto agar lebih menyatu -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <section id="tentang" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal-element" style="transition-delay: 0ms">
+                        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">
+                            Pendekatan Multidisiplin untuk Masalah Kompleks
+                        </h2>
+                        <div class="space-y-6 font-body text-slate-600 text-lg leading-relaxed">
+                            <p>Sebagai profesional hibrida, saya tidak hanya melihat website sebagai barisan kode atau sekadar kanvas visual. Saya melihatnya sebagai <strong>mesin bisnis</strong> yang harus berfungsi optimal.</p>
+                            <p>Keahlian saya di bidang <strong>Front-End Development</strong> memastikan produk akhir memanjakan mata. Latar belakang <strong>Design</strong> menjamin antarmuka yang intuitif. Sementara insting <strong>Digital Marketing</strong> memastikan setiap elemen dirancang untuk mengonversi pengunjung menjadi pelanggan.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Value Proposition Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="reveal-element bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow" style="transition-delay: 100ms">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                                <i data-lucide="code" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Clean Code</h3>
+                            <p class="font-body text-slate-600 text-sm">Arsitektur web modern yang scalable, cepat, dan mudah dipelihara.</p>
+                        </div>
+                        <div class="reveal-element bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow" style="transition-delay: 200ms">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                                <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">User-Centric</h3>
+                            <p class="font-body text-slate-600 text-sm">Desain dengan konsep mengikuti zaman yang mengutamakan kemudahan, modern dan keindahan.</p>
+                        </div>
+                        <div class="reveal-element bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow sm:col-span-2" style="transition-delay: 300ms">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                                <i data-lucide="chart-no-axes-combined" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Conversion Focused</h3>
+                            <p class="font-body text-slate-600 text-sm">Setiap keputusan desain dan teknis didasarkan pada data dan metrik ROI untuk memaksimalkan hasil bisnis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="keahlian" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal-element text-center mb-16" style="transition-delay: 0ms">
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Matriks Keahlian</h2>
+                    <p class="font-body text-slate-600 text-lg max-w-2xl mx-auto">
+                        Kumpulan teknologi dan metodologi yang saya gunakan untuk mewujudkan ide menjadi produk nyata.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Frontend Skills (Populated by JS) -->
+                    <div class="reveal-element bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full hover:shadow-md transition-shadow" style="transition-delay: 100ms">
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                            <i data-lucide="code" class="w-6 h-6 text-blue-600 mr-3"></i> Front-End
+                        </h3>
+                        <ul class="space-y-4" id="skills-frontend"></ul>
+                    </div>
+
+                    <!-- Design Skills (Populated by JS) -->
+                    <div class="reveal-element bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full hover:shadow-md transition-shadow" style="transition-delay: 200ms">
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                            <i data-lucide="pen-tool" class="w-6 h-6 text-blue-600 mr-3"></i>Design
+                        </h3>
+                        <ul class="space-y-4" id="skills-design"></ul>
+                    </div>
+
+                    <!-- Marketing Skills (Populated by JS) -->
+                    <div class="reveal-element bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full hover:shadow-md transition-shadow" style="transition-delay: 300ms">
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                            <i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-blue-600 mr-3"></i> Marketing
+                        </h3>
+                        <ul class="space-y-4" id="skills-marketing"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portofolio" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal-element flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6" style="transition-delay: 0ms">
+                    <div>
+                        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Galeri Karya</h2>
+                        <p class="font-body text-slate-600 text-lg max-w-xl">
+                            Studi kasus pilihan yang membuktikan dampak nyata dari perpaduan teknologi, desain, dan strategi pemasaran.
+                        </p>
+                    </div>
+                    
+                    <!-- Filter Cerdas -->
+                    <div class="flex flex-wrap gap-2" id="filter-container">
+                        <!-- Buttons generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Grid Proyek -->
+                <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 min-h-[400px]">
+                    <!-- Projects populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAL DETAIL PROYEK -->
+        <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4 sm:px-6">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+            
+            <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 shadow-2xl animate-in fade-in duration-200">
+                <button onclick="closeModal()" class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur rounded-full text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors z-20">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                
+                <div class="w-full aspect-[21/9] sm:aspect-[3/1] bg-slate-100 relative">
+                    <img id="modal-image" src="" alt="" class="w-full h-full object-cover"/>
+                </div>
+                
+                <div class="p-8 sm:p-12">
+                    <div id="modal-tags" class="flex flex-wrap gap-2 mb-4">
+                        <!-- Tags populated by JS -->
+                    </div>
+                    
+                    <h3 id="modal-title" class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mb-8"></h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 font-body">
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-bold text-slate-900 flex items-center border-b pb-2">
+                                <i data-lucide="x" class="w-5 h-5 text-red-500 mr-2"></i> Tantangan (Problem)
+                            </h4>
+                            <p id="modal-problem" class="text-slate-600 text-sm leading-relaxed"></p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-bold text-slate-900 flex items-center border-b pb-2">
+                                <i data-lucide="pen-tool" class="w-5 h-5 text-blue-500 mr-2"></i> Solusi (Solution)
+                            </h4>
+                            <p id="modal-solution" class="text-slate-600 text-sm leading-relaxed"></p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-bold text-slate-900 flex items-center border-b pb-2">
+                                <i data-lucide="trending-up" class="w-5 h-5 text-green-500 mr-2"></i> Hasil (Impact)
+                            </h4>
+                            <p id="modal-impact" class="text-slate-600 text-sm leading-relaxed font-semibold text-slate-800 bg-green-50 p-4 rounded-lg border border-green-100"></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 pt-8 border-t flex flex-col sm:flex-row gap-4 justify-end">
+                        <button class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold rounded-lg text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition-all">
+                            <i data-lucide="code" class="w-4 h-4 mr-2"></i> Lihat Kode (GitHub)
+                        </button>
+                        <button class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-md">
+                            <i data-lucide="external-link" class="w-4 h-4 mr-2"></i> Lihat Live Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="kontak" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal-element bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row" style="transition-delay: 0ms">
+                    
+                    <!-- Info Kontak -->
+                    <div class="bg-slate-900 text-white p-10 lg:p-16 lg:w-2/5 flex flex-col justify-between">
+                        <div>
+                            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold mb-4">Mari Berkolaborasi.</h2>
+                            <p class="font-body text-slate-400 mb-10 text-lg">
+                                Apakah Anda memiliki proyek inovatif, butuh desain ulang, atau ingin meningkatkan konversi? Kirimkan pesan, saya siap membantu.
+                            </p>
+                            
+                            <div class="space-y-6 font-body">
+                                <a href="mailto:hello@example.com" class="flex items-center text-slate-300 hover:text-white transition-colors group">
+                                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mr-4 group-hover:bg-blue-600 transition-colors">
+                                        <i data-lucide="mail" class="w-5 h-5"></i>
+                                    </div>
+                                    hello@domainAnda.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-16 pt-8 border-t border-slate-800">
+                            <p class="text-slate-400 text-sm font-semibold mb-4 uppercase tracking-wider">Terhubung</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+                                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:bg-slate-700 hover:text-white transition-all">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulir Kontak -->
+                    <div class="bg-white p-10 lg:p-16 lg:w-3/5">
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-slate-700 mb-2 font-body">Nama Lengkap</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all outline-none font-body" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-slate-700 mb-2 font-body">Alamat Email</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all outline-none font-body" placeholder="john@perusahaan.com">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-semibold text-slate-700 mb-2 font-body">Subjek / Tujuan</label>
+                                <input type="text" id="subject" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all outline-none font-body" placeholder="Peluang Freelance / Tawaran Kerja">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-semibold text-slate-700 mb-2 font-body">Pesan Anda</label>
+                                <textarea id="message" rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all outline-none font-body resize-none" placeholder="Ceritakan tentang proyek atau kebutuhan Anda..."></textarea>
+                            </div>
+                            
+                            <!-- Status Success Message (Hidden by default) -->
+                            <div id="form-success" class="hidden bg-green-50 border border-green-200 text-green-700 px-4 py-4 rounded-lg font-body font-medium flex items-center">
+                                <i data-lucide="check-circle" class="w-5 h-5 mr-2"></i> Pesan berhasil dikirim! Saya akan membalas secepatnya.
+                            </div>
+                            
+                            <button id="submit-btn" type="submit" class="w-full flex items-center justify-center px-8 py-4 text-base font-bold rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-md transition-all duration-300">
+                                Kirim Pesan <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-heading font-extrabold text-xl tracking-tight text-slate-900">
+                    PORT<span class="text-blue-600">FOLIO.</span>
+                </span>
+            </div>
+            <div class="text-center md:text-right font-body text-slate-500 text-sm">
+                <p>&copy; <span id="current-year"></span> Kreator Digital. Dirancang & Dibangun dengan Hati & Data.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Projects
+        const projects = [
+            {
+                id: 1, title: "Shopee - Pioneer adhesives Indonesia", category: "Digital Marketing",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
+                tags: ["Konten", "ShopeeAds", "StrategiKampanye"],
+                problem: "Website e-commerce klien memiliki waktu muat yang lambat (LCP > 4s) dan architecture monolitik yang sulit di-scale.",
+                solution: "Melakukan migrasi ke arsitektur headless commerce menggunakan Next.js dan Tailwind CSS, serta mengoptimalkan pemuatan gambar.",
+                impact: "Waktu muat turun menjadi 1.2s, meningkatkan konversi penjualan sebesar 24% dalam bulan pertama peluncuran.",
+                images: "C:\Users\hp\Downloads\portofolio\imageads 3 bulan akhir 2026.png"
+
+            },
+            {
+                id: 2, title: "Fintech App Redesign", category: "Desain",
+                image: "https://images.unsplash.com/photo-1616077168079-7e0908d07656?auto=format&fit=crop&q=80&w=800",
+                tags: ["UI/UX", "Figma", "Design System"],
+                problem: "Aplikasi keuangan memiliki tingkat drop-off tinggi pada tahap registrasi karena UI yang membingungkan dan tidak ramah pengguna.",
+                solution: "Mendesain ulang user flow dengan pendekatan modern, membangun sistem desain (design system) yang konsisten, dan menyederhanakan form.",
+                impact: "Mengurangi drop-off rate sebesar 35% dan meningkatkan skor kepuasan pengguna (CSAT) dari 3.2 menjadi 4.5."
+            },
+            {
+                id: 3, title: "B2B SaaS Growth Campaign", category: "Digital Marketing",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+                tags: ["SEO", "Google Ads", "Analytics"],
+                problem: "Klien SaaS B2B kesulitan mendapatkan leads berkualitas (MQL) dari mesin pencari, biaya akuisisi (CAC) terlalu tinggi.",
+                solution: "Menerapkan strategi SEO on-page, merestrukturisasi kampanye Google Ads dengan fokus pada long-tail keyword, dan optimasi landing page.",
+                impact: "Meningkatkan organic traffic 150%, menurunkan CAC sebesar 40%, dan menghasilkan 50+ MQL baru per bulan."
+            },
+            {
+                id: 4, title: "Dasbor Analitik Real-time", category: "Front-End",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+                tags: ["React", "Zustand", "Recharts"],
+                problem: "Tim internal membutuhkan visibilitas data real-time untuk pengambilan keputusan, namun sistem lama memakan waktu lama untuk query.",
+                solution: "Membangun SPA dashboard menggunakan React dan Zustand untuk state management, divisualisasikan dengan Recharts yang interaktif.",
+                impact: "Menghemat 10+ jam kerja mingguan tim analis dan mempercepat waktu pelaporan operasional."
+            },
+            {
+                id: 5, title: "Landing Page Optimasi Konversi", category: "Desain",
+                image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
+                tags: ["CRO", "Web Design", "A/B Testing"],
+                problem: "Tingkat konversi (CR) landing page produk utama stagnan di angka 1.5%, di bawah standar industri.",
+                solution: "Mendesain ulang hero section, memperjelas copywriting CTA, dan menambahkan elemen social proof. Melakukan A/B testing selama 2 minggu.",
+                impact: "Meningkatkan CR menjadi 3.8% (peningkatan >150%) tanpa menambah anggaran iklan (Ad Spend)."
+            },
+            {
+                id: 6, title: "Email Marketing Automation", category: "Digital Marketing",
+                image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=800",
+                tags: ["Mailchimp", "Copywriting", "CRM"],
+                problem: "Daftar email subscriber berjumlah besar namun tingkat open rate dan click-through rate (CTR) sangat rendah (di bawah 10%).",
+                solution: "Membangun sequence email otomatis berdasarkan segmentasi perilaku pengguna, membersihkan list, dan merampingkan copywriting.",
+                impact: "Open rate melonjak ke 32%, CTR mencapai 12%, berkontribusi pada 15% dari total penjualan kuartal tersebut."
+            }
+        ];
+
+        // Data Skills
+        const skills = {
+            frontend: ["React.js", "JavaSrcipt", "PHP", "Tailwind CSS", "Boostrap", "HTML5/CSS3","PYthon"],
+            design: ["Figma", "UI/UX Design", "Wireframing", "Prototyping", "Adobe Illustrator", "Adobe Photoshop", "Canva"],
+            marketing: ["SEO/SEM", "Google Analytic", "META ADS", "SHOPEE ADS", "Content Strategy", "SIPAS ADS"]
+        };
+
+        let currentFilter = 'Semua';
+        const categories = ['Semua', 'Front-End', 'Desain', 'Digital Marketing'];
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set Year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Render Skills
+            renderSkills('frontend', skills.frontend);
+            renderSkills('design', skills.design);
+            renderSkills('marketing', skills.marketing);
+
+            // Render Portfolio
+            renderFilters();
+            renderProjects();
+
+            // Initialize Icons
+            lucide.createIcons();
+
+            // Setup Intersection Observer for Reveal Animations
+            setupRevealObserver();
+            
+            // Setup Scroll Spy
+            window.addEventListener('scroll', handleScrollSpy);
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            
+            // Change icon based on state
+            if (isHidden) {
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Scroll to Section
+        function scrollToSection(sectionId) {
+            mobileMenu.classList.add('hidden');
+            menuIcon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+            
+            const element = document.getElementById(sectionId);
+            if (element) {
+                window.scrollTo({
+                    top: element.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Scroll Spy Logic
+        function handleScrollSpy() {
+            const sections = ['beranda', 'tentang', 'keahlian', 'portofolio', 'kontak'];
+            const scrollPosition = window.scrollY + 100;
+
+            let currentActive = 'beranda';
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const { offsetTop, offsetHeight } = element;
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        currentActive = section;
+                    }
+                }
+            }
+
+            // Update Nav Classes
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-section') === currentActive) {
+                    btn.classList.remove('text-slate-600');
+                    btn.classList.add('text-blue-600');
+                } else {
+                    btn.classList.remove('text-blue-600');
+                    btn.classList.add('text-slate-600');
+                }
+            });
+        }
+
+        // Render Skills
+        function renderSkills(id, skillsArray) {
+            const container = document.getElementById(`skills-${id}`);
+            container.innerHTML = skillsArray.map(skill => `
+                <li class="flex items-center font-body text-slate-700">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"></i>
+                    ${skill}
+                </li>
+            `).join('');
+        }
+
+        // Render Portfolio Filters
+        function renderFilters() {
+            const container = document.getElementById('filter-container');
+            container.innerHTML = categories.map(category => {
+                const isActive = currentFilter === category;
+                const baseClass = "px-5 py-2.5 rounded-full font-body text-sm font-semibold transition-all duration-300";
+                const activeClass = isActive ? "bg-blue-600 text-white shadow-md" : "bg-white text-slate-600 border border-slate-200 hover:border-blue-600 hover:text-blue-600";
+                
+                return `<button onclick="setFilter('${category}')" class="${baseClass} ${activeClass}">${category}</button>`;
+            }).join('');
+        }
+
+        // Change Filter
+        function setFilter(category) {
+            currentFilter = category;
+            renderFilters();
+            renderProjects();
+            // Re-trigger animations for new items
+            setTimeout(setupRevealObserver, 50); 
+        }
+
+        // Render Projects Grid
+        function renderProjects() {
+            const grid = document.getElementById('project-grid');
+            const filtered = currentFilter === 'Semua' 
+                ? projects 
+                : projects.filter(p => p.category === currentFilter);
+
+            grid.innerHTML = filtered.map((project, index) => `
+                <div class="reveal-element group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full cursor-pointer" 
+                     style="transition-delay: ${index * 100}ms"
+                     onclick="openModal(${project.id})">
+                    <div class="relative aspect-video overflow-hidden bg-slate-200">
+                        <img src="${project.image}" alt="${project.title}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"/>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-900">
+                            ${project.category}
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">${project.title}</h3>
+                        <p class="font-body text-slate-600 text-sm mb-6 line-clamp-3">${project.problem}</p>
+                        <div class="mt-auto">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${project.tags.map(tag => `<span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md text-xs font-medium text-slate-600">${tag}</span>`).join('')}
+                            </div>
+                            <div class="flex items-center text-blue-600 font-semibold text-sm font-body">
+                                Lihat Detail <i data-lucide="arrow-right" class="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            lucide.createIcons();
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('project-modal');
+        function openModal(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            // Populate Modal
+            document.getElementById('modal-image').src = project.image;
+            document.getElementById('modal-title').textContent = project.title;
+            document.getElementById('modal-problem').textContent = project.problem;
+            document.getElementById('modal-solution').textContent = project.solution;
+            document.getElementById('modal-impact').textContent = project.impact;
+            
+            // Render Tags inside modal
+            const tagsHtml = `
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">${project.category}</span>
+                ${project.tags.map(tag => `<span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">${tag}</span>`).join('')}
+            `;
+            document.getElementById('modal-tags').innerHTML = tagsHtml;
+
+            // Show Modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Contact Form Submission Simulation
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const successMsg = document.getElementById('form-success');
+            const form = e.target;
+
+            // Hide button, show success
+            btn.classList.add('hidden');
+            successMsg.classList.remove('hidden');
+
+            setTimeout(() => {
+                form.reset();
+                btn.classList.remove('hidden');
+                successMsg.classList.add('hidden');
+            }, 4000);
+        });
+
+        // Intersection Observer for Scroll Reveal
+        function setupRevealObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Hanya animasi 1x
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-element:not(.is-visible)').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>
